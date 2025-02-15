@@ -11,7 +11,9 @@
   left: 0;
   z-index: 1000;
 }
-
+.logo-container a{
+  text-decoration: none;
+}
 /* 🔥 Menu de Categorias */
 .categories {
   position: relative;

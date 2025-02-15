@@ -1,11 +1,13 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { CartService } from '../../services/cart.service';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
   standalone: true,
+  imports: [RouterLink],
   templateUrl: './navbar.component.html',
-  styleUrls: ['./navbar.component.css']
+  styleUrls: ['./navbar.component.css'],
 })
 export class NavbarComponent {
   @Output() search = new EventEmitter<string>();

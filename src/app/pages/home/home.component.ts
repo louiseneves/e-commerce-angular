@@ -3,13 +3,14 @@ import { NavbarComponent } from '../../components/navbar/navbar.component';
 import { ProductListComponent } from '../../components/product-list/product-list.component';
 import { FooterComponent } from '../../components/footer/footer.component';
 import { CommonModule } from '@angular/common';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [NavbarComponent, ProductListComponent, FooterComponent, CommonModule],
+  imports: [NavbarComponent, ProductListComponent, FooterComponent, CommonModule,RouterLink],
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+  styleUrls: ['./home.component.css'],
 })
 export class HomeComponent implements AfterViewInit {
   searchTerm: string = '';
