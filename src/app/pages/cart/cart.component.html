@@ -1,0 +1,16 @@
+<h1>Carrinho de Compras</h1>
+
+<!-- Verifica se o carrinho tem itens -->
+  <div *ngFor="let item of cart; trackBy: trackById" class="cart-item">
+    <p>{{ item.name }} - R$ {{ item.price }}</p>
+    <button (click)="removeFromCart(item.id)">Remover</button>
+  </div>
+
+  <hr>
+  <h3>Total: R$ {{ getTotal() }}</h3>
+
+
+<!-- Caso o carrinho esteja vazio -->
+<ng-template #emptyCart>
+  <p>O carrinho está vazio.</p>
+</ng-template>

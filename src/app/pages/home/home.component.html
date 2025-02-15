@@ -1,0 +1,29 @@
+<app-navbar (search)="onSearch($event)"></app-navbar>
+
+<!-- 🎯 Banners Promocionais (Carrossel) -->
+<div class="banner">
+  <div class="banner-content">
+    <h1>🔥 Promoção Especial: Até 50% OFF!</h1>
+    <p>Ofertas exclusivas em medicamentos e vitaminas. Aproveite!</p>
+    <a routerLink="/ofertas" class="banner-btn">Ver Ofertas</a>
+  </div>
+</div>
+
+<!-- 🏷️ Categorias -->
+<section class="categories">
+  <h2>📂 Categorias em Destaque</h2>
+  <div class="category-list">
+    <a routerLink="/category/analgesicos" class="category-card">💊 Analgésicos</a>
+    <a routerLink="/category/antibioticos" class="category-card">🦠 Antibióticos</a>
+    <a routerLink="/category/vitaminas" class="category-card">💪 Vitaminas</a>
+    <a routerLink="/category/cosmeticos" class="category-card">🧴 Cosméticos</a>
+  </div>
+</section>
+
+<!-- 🛍️ Lista de Produtos -->
+<section class="product-section">
+  <h2>🔥 Ofertas Especiais</h2>
+  <app-product-list [searchTerm]="searchTerm"></app-product-list>
+</section>
+
+<app-footer></app-footer>

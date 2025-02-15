@@ -1,0 +1,19 @@
+.filter-container {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  padding: 20px;
+}
+
+input, select {
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  width: 250px;
+}
+
+input:focus, select:focus {
+  border-color: #007bff;
+  outline: none;
+}

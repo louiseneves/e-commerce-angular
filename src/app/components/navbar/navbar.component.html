@@ -1,0 +1,44 @@
+<nav class="navbar">
+  <div class="logo-container">
+    <a routerLink="/" class="logo">💊 MedTrade</a>
+  </div>
+
+  <!-- Menu de Categorias -->
+  <div class="categories">
+    <button class="category-btn">📂 Categorias ▼</button>
+    <ul class="dropdown">
+      <li><a routerLink="/category/analgesicos">Analgésicos</a></li>
+      <li><a routerLink="/category/antibioticos">Antibióticos</a></li>
+      <li><a routerLink="/category/vitaminas">Vitaminas</a></li>
+      <li><a routerLink="/category/dermocosmeticos">Dermocosméticos</a></li>
+    </ul>
+  </div>
+
+  <!-- Barra de pesquisa -->
+  <div class="search-bar">
+    <input type="text" placeholder="🔍 Pesquisar remédios..." (input)="onSearch($event)">
+    <button>🔎</button>
+  </div>
+
+  <ul class="nav-links">
+    <li><a routerLink="/ofertas">🔥 Ofertas</a></li>
+    <li><a routerLink="/frete-gratis">🚛 Frete Grátis</a></li>
+
+    <!-- Ícone de login -->
+    <li>
+      <a routerLink="/login" class="user-icon">
+        <img src="assets/user-icon.png" alt="Login">
+      </a>
+    </li>
+
+    <!-- Ícone de carrinho com contador -->
+    <li class="cart">
+      <a routerLink="/cart">🛒 <span class="cart-count">{{ cartItemCount }}</span></a>
+    </li>
+
+    <!-- Modo Claro/Escuro -->
+    <li>
+      <button class="theme-toggle" (click)="toggleTheme()">🌙</button>
+    </li>
+  </ul>
+</nav>

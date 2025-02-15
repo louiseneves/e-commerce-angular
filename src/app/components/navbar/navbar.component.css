@@ -1,0 +1,129 @@
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #ffe600;
+  padding: 15px 30px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+}
+
+/* 🔥 Menu de Categorias */
+.categories {
+  position: relative;
+}
+
+.category-btn {
+  background: transparent;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.dropdown {
+  display: none;
+  position: absolute;
+  top: 30px;
+  left: 0;
+  background: white;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+}
+
+.categories:hover .dropdown {
+  display: block;
+}
+
+/* 🔍 Barra de pesquisa */
+.search-bar {
+  flex: 2;
+  display: flex;
+  justify-content: center;
+  max-width: 600px;
+  width: 100%;
+}
+
+.search-bar input {
+  width: 70%;
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 5px 0 0 5px;
+  border: 1px solid #ccc;
+}
+
+.search-bar button {
+  background: #0056b3;
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 0 5px 5px 0;
+}
+
+.search-bar button:hover {
+  background: #0041a3;
+}
+
+/* 🔗 Links da navbar */
+.nav-links {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.nav-links a {
+  color: #333;
+  text-decoration: none;
+  font-size: 16px;
+}
+
+.nav-links .user-icon img {
+  width: 30px;
+  border-radius: 50%;
+}
+
+.nav-links .cart {
+  position: relative;
+}
+
+.cart-count {
+  position: absolute;
+  top: -5px;
+  right: -10px;
+  background: red;
+  color: white;
+  font-size: 12px;
+  padding: 2px 6px;
+  border-radius: 50%;
+}
+
+/* 🌙 Modo escuro */
+.theme-toggle {
+  background: transparent;
+  border: none;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+/* 🎨 Tema escuro */
+body.dark-mode {
+  background: #222;
+  color: white;
+}
+
+body.dark-mode .navbar {
+  background: #333;
+}
+
+body.dark-mode .nav-links a {
+  color: white;
+}
+
+
+
+

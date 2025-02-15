@@ -1,0 +1,28 @@
+<div class="product-list">
+  <div *ngFor="let product of products; trackBy: trackById" class="product-card">
+    
+    <!-- Imagem do produto -->
+    <div class="product-image">
+      <img [src]="product.image" alt="{{ product.name }}">
+    </div>
+
+    <!-- Nome do produto -->
+    <h3>{{ product.name }}</h3>
+
+    <!-- Princípio ativo (se existir) -->
+    <p class="active-ingredient" *ngIf="product.activeIngredient">
+      🔬 {{ product.activeIngredient }}
+    </p>
+
+    <!-- Preço -->
+    <p class="price">💰 R$ {{ product.price }}</p>
+
+    <!-- Botões -->
+    <div class="buttons">
+      <button (click)="addToCart(product)">🛒 Adicionar ao Carrinho</button>
+      <button [routerLink]="['/product', product.id]">🔍 Ver Detalhes</button>
+    </div>
+
+  </div>
+</div>
+
