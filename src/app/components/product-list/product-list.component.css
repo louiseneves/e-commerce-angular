@@ -1,95 +1,124 @@
-/* 🎯 Layout da lista de produtos */
+/* 🛍️ Grid da lista de produtos */
 .product-list {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Ajusta automaticamente as colunas */
   gap: 20px;
-  justify-content: center;
   padding: 20px;
+  justify-content: center;
 }
 
-/* 💊 Cartão de cada produto */
+/* 🏷️ Estilização dos cards */
 .product-card {
   background: white;
   border-radius: 10px;
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
   padding: 15px;
   text-align: center;
-  width: 250px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s, box-shadow 0.3s;
+  position: relative;
 }
 
-/* 🖼 Imagem do produto */
+/* 📸 Imagem do produto */
 .product-image img {
   width: 100%;
-  border-radius: 8px;
-  transition: transform 0.3s;
+  height: auto;
+  max-height: 150px;
+  object-fit: contain;
+  margin-bottom: 10px;
 }
 
-.product-image img:hover {
-  transform: scale(1.05);
-}
-
-/* 🏷 Nome do produto */
+/* 🏷️ Nome do produto */
 .product-card h3 {
   font-size: 18px;
-  margin: 10px 0;
+  color: #333;
+  margin-bottom: 5px;
 }
 
 /* 🔬 Princípio ativo */
 .active-ingredient {
   font-size: 14px;
   color: #555;
-  margin-bottom: 8px;
+  margin-bottom: 10px;
 }
 
 /* 💰 Preço */
 .price {
-  font-size: 20px;
-  color: #e60000;
+  font-size: 18px;
   font-weight: bold;
-  margin-bottom: 15px;
+  color: #007bff;
 }
 
-/* 🎯 Botões */
+/* 🚫 Destaque para produto esgotado */
+.out-of-stock-label {
+  color: red;
+  font-size: 14px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+/* 🛒 Botões */
 .buttons {
   display: flex;
-  flex-direction: column;
+  justify-content: center;
   gap: 10px;
+  margin-top: 10px;
 }
 
-button {
-  background: #007bff;
-  color: white;
-  border: none;
-  padding: 10px;
-  font-size: 16px;
-  cursor: pointer;
-  border-radius: 5px;
-  transition: background 0.3s;
-}
-
-button:hover {
-  background: #0056b3;
-}
-
-button:last-child {
+.buttons button {
   background: #28a745;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  font-size: 14px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s;
 }
 
-button:last-child:hover {
+.buttons button:hover {
   background: #218838;
 }
 
-/* ✨ Efeito de Hover no Card */
-.product-card:hover {
-  transform: scale(1.05);
-  box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.15);
+/* 🚫 Botão desabilitado para produtos esgotados */
+.buttons button:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+}
+
+/* 🔍 Botão de "Ver Detalhes" */
+.buttons button:last-child {
+  background: #007bff;
+}
+
+.buttons button:last-child:hover {
+  background: #0056b3;
+}
+
+/* 🛑 Estilização especial para produtos esgotados */
+.product-card.out-of-stock {
+  opacity: 0.7;
+  filter: grayscale(80%);
 }
 
 /* 📱 Responsividade */
 @media (max-width: 768px) {
+  .product-list {
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  }
+
   .product-card {
-    width: 90%;
+    padding: 10px;
+  }
+
+  .buttons {
+    flex-direction: column;
+  }
+
+  .buttons button {
+    font-size: 12px;
+    padding: 8px;
   }
 }
+
+
 

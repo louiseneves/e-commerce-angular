@@ -3,10 +3,17 @@
     <a routerLink="/" class="logo">💊 MedTrade</a>
   </div>
 
-  <!-- Menu de Categorias -->
+  <!-- 📂 Menu de Categorias -->
   <div class="categories">
-    <button class="category-btn">📂 Categorias ▼</button>
-    <ul class="dropdown">
+    <button 
+      class="category-btn" 
+      (click)="toggleCategories($event)" 
+      aria-haspopup="true" 
+      [attr.aria-expanded]="isCategoryOpen ? 'true' : 'false'"
+    >
+      📂 Categorias ▼
+    </button>
+    <ul class="dropdown" *ngIf="isCategoryOpen">
       <li><a routerLink="/category/analgesicos">Analgésicos</a></li>
       <li><a routerLink="/category/antibioticos">Antibióticos</a></li>
       <li><a routerLink="/category/vitaminas">Vitaminas</a></li>
@@ -14,31 +21,28 @@
     </ul>
   </div>
 
-  <!-- Barra de pesquisa -->
+  <!-- 🔍 Barra de pesquisa -->
   <div class="search-bar">
-    <input type="text" placeholder="🔍 Pesquisar remédios..." (input)="onSearch($event)">
-    <button>🔎</button>
+    <input 
+      type="text" 
+      placeholder="🔍 Pesquisar remédios..." 
+      (input)="onInputChange($event)" 
+      (keyup)="onEnterKey($event)" 
+      [value]="searchTerm"
+      aria-label="Barra de pesquisa de medicamentos"
+    >
+    <button (click)="performSearch()">🔎</button>
   </div>
 
-  <ul class="nav-links">
-    <li><a routerLink="/ofertas">🔥 Ofertas</a></li>
-    <li><a routerLink="/frete-gratis">🚛 Frete Grátis</a></li>
+  <!-- 🔗 Links e Carrinho -->
+  <div class="navbar-right">
+    <a routerLink="/login" class="login-btn">👤 Entrar</a>
 
-    <!-- Ícone de login -->
-    <li>
-      <a routerLink="/login" class="user-icon">
-        <img src="assets/user-icon.png" alt="Login">
-      </a>
-    </li>
-
-    <!-- Ícone de carrinho com contador -->
-    <li class="cart">
-      <a routerLink="/cart">🛒 <span class="cart-count">{{ cartItemCount }}</span></a>
-    </li>
-
-    <!-- Modo Claro/Escuro -->
-    <li>
-      <button class="theme-toggle" (click)="toggleTheme()">🌙</button>
-    </li>
-  </ul>
+    <!-- 🛒 Ícone do Carrinho com Contador -->
+    <a routerLink="/cart" class="cart">
+      🛒
+      <span class="cart-count" *ngIf="cartItemCount > 0">{{ cartItemCount }}</span>
+    </a>
+  </div>
 </nav>
+

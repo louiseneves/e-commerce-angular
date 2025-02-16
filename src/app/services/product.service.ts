@@ -7,10 +7,10 @@ import { BehaviorSubject, Observable, of } from 'rxjs';
 })
 export class ProductService {
   private products: Product[] = [
-    { id: 1, name: 'Paracetamol', price: 10, image: 'https://picsum.photos/200', category: 'Analgésico',activeIngredient:'' },
-    { id: 2, name: 'Tênis', price: 200, image: 'https://picsum.photos/150', category: 'Analgésico',activeIngredient:'' },
-    { id: 3, name: 'Relógio', price: 300, image: 'https://picsum.photos/300', category: 'Antibiótico',activeIngredient:'' },
-    { id: 4, name: 'Boné', price: 80, image: 'https://picsum.photos/400', category: 'Antibiótico',activeIngredient:'' }
+    { id: 1, name: 'Paracetamol', price: 10, image: 'https://picsum.photos/200', category: 'Analgésico',activeIngredient:'',inStock:false },
+    { id: 2, name: 'Tênis', price: 200, image: 'https://picsum.photos/150', category: 'Analgésico',activeIngredient:'',inStock:true },
+    { id: 3, name: 'Relógio', price: 300, image: 'https://picsum.photos/300', category: 'Antibiótico',activeIngredient:'',inStock:true },
+    { id: 4, name: 'Boné', price: 80, image: 'https://picsum.photos/400', category: 'Antibiótico',activeIngredient:'',inStock:true }
   ];
 
   private filteredProductsSubject = new BehaviorSubject<Product[]>(this.products);

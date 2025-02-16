@@ -1,90 +1,239 @@
-/* 🎯 Carrossel de Banners */
-/* 🎯 Estilizando o banner */
+/* 🎯 Banner principal */
 .banner {
-  background: url('https://picsum.photos/200') no-repeat center center/cover;
-  height: 250px;
+  width: 100%;
+  height: 300px;
+  background: url('https://picsum.photos/200') no-repeat center center;
+  background-size: cover;
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
   color: white;
-  padding: 20px;
+  position: relative;
 }
 
+/* 🔥 Sobreposição escura para melhor legibilidade */
+.banner::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5); /* Efeito de escurecimento */
+  z-index: 1;
+}
+
+/* 📢 Conteúdo do banner */
 .banner-content {
-  background: rgba(0, 0, 0, 0.6);
+  position: relative;
+  z-index: 2;
+  max-width: 600px;
   padding: 20px;
-  border-radius: 8px;
 }
 
+/* 💰 Texto da promoção */
 .banner h1 {
-  font-size: 28px;
+  font-size: 32px;
+  font-weight: bold;
   margin-bottom: 10px;
 }
 
-.banner p {
-  font-size: 18px;
-  margin-bottom: 15px;
+.banner .highlight {
+  color: #ffdd00;
+  font-size: 36px;
 }
 
+/* 📜 Texto secundário */
+.banner p {
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+
+/* 🔥 Botão de ofertas */
 .banner-btn {
   background: #ffcc00;
-  padding: 10px 20px;
-  text-decoration: none;
-  font-size: 18px;
   color: black;
+  padding: 12px 24px;
+  font-size: 18px;
   font-weight: bold;
+  text-decoration: none;
   border-radius: 5px;
   transition: 0.3s;
+  display: inline-block;
 }
 
 .banner-btn:hover {
   background: #ff9900;
-}
-
-
-/* 🏷️ Categorias */
-.categories {
-  text-align: center;
-  padding: 30px 0;
-}
-
-.categories h2 {
-  color: #333;
-  font-size: 24px;
-  margin-bottom: 20px;
-}
-
-.category-list {
-  display: flex;
-  justify-content: center;
-  gap: 15px;
-}
-
-.category-card {
-  background: #ffcc00;
-  padding: 15px 20px;
-  border-radius: 8px;
-  text-decoration: none;
-  font-size: 16px;
-  font-weight: bold;
-  color: black;
-  transition: 0.3s;
-}
-
-.category-card:hover {
-  background: #ff9900;
   transform: scale(1.05);
 }
 
-/* 🛍️ Seção de Produtos */
-.product-section {
-  text-align: center;
-  padding: 20px;
+/* 📱 Responsividade para celulares */
+@media (max-width: 768px) {
+  .banner {
+    height: 250px;
+  }
+
+  .banner h1 {
+    font-size: 24px;
+  }
+
+  .banner p {
+    font-size: 16px;
+  }
+
+  .banner-btn {
+    font-size: 16px;
+    padding: 10px 20px;
+  }
 }
 
-.product-section h2 {
-  font-size: 24px;
-  color: #333;
-  margin-bottom: 20px;
+/* 🏷️ Categorias */
+/* 🏷️ Estilo da seção de categorias */
+.categories {
+  text-align: center;
+  padding: 40px 20px;
+  background: #f8f8f8;
+  border-radius: 10px;
 }
+
+/* 🎯 Título */
+.categories h2 {
+  font-size: 28px;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+/* 🏷️ Lista de categorias */
+.category-list {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+/* 🛍️ Estilo dos cards de categoria */
+.category-card {
+  background: white;
+  border-radius: 10px;
+  padding: 15px;
+  width: 160px;
+  text-align: center;
+  font-size: 18px;
+  font-weight: bold;
+  text-decoration: none;
+  color: #333;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* 🖼️ Ícones das categorias */
+.category-card img {
+  width: 50px;
+  height: 50px;
+  margin-bottom: 10px;
+}
+
+/* 💡 Efeito hover */
+.category-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* 📱 Responsividade: Ajusta para telas menores */
+@media (max-width: 768px) {
+  .category-list {
+    flex-wrap: wrap;
+    gap: 15px;
+  }
+
+  .category-card {
+    width: 140px;
+  }
+}
+
+/* 🛍️ Seção de Produtos */
+/* 🎯 Estilo da seção de produtos */
+.product-section {
+  text-align: center;
+  padding: 40px 20px;
+  background: #f8f8f8;
+  border-radius: 10px;
+}
+
+/* 🏷️ Título da seção */
+.product-section h2 {
+  font-size: 28px;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+/* ⏳ Loader animado */
+.loader {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 20px 0;
+  font-size: 18px;
+  color: #666;
+}
+
+/* 🔄 Animação do loader */
+.spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid #ddd;
+  border-top-color: #007bff;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: 10px;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* 🔍 Botão "Ver mais ofertas" */
+.see-more {
+  margin-top: 20px;
+}
+
+.see-more-btn {
+  background: #007bff;
+  color: white;
+  padding: 12px 24px;
+  font-size: 18px;
+  font-weight: bold;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: 0.3s;
+  display: inline-block;
+}
+
+.see-more-btn:hover {
+  background: #0056b3;
+  transform: scale(1.05);
+}
+
+/* 📱 Responsividade */
+@media (max-width: 768px) {
+  .product-section {
+    padding: 30px 10px;
+  }
+
+  .product-section h2 {
+    font-size: 24px;
+  }
+
+  .see-more-btn {
+    font-size: 16px;
+    padding: 10px 20px;
+  }
+}
+

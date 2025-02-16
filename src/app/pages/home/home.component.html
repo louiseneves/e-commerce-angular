@@ -1,29 +1,60 @@
 <app-navbar (search)="onSearch($event)"></app-navbar>
-
 <!-- 🎯 Banners Promocionais (Carrossel) -->
 <div class="banner">
   <div class="banner-content">
-    <h1>🔥 Promoção Especial: Até 50% OFF!</h1>
+    <h1>🔥 Promoção Especial: Até <span class="highlight">50% OFF!</span></h1>
     <p>Ofertas exclusivas em medicamentos e vitaminas. Aproveite!</p>
-    <a routerLink="/ofertas" class="banner-btn">Ver Ofertas</a>
+    <a routerLink="/ofertas" class="banner-btn" aria-label="Ver ofertas especiais em medicamentos">
+      Ver Ofertas 🛒
+    </a>
   </div>
 </div>
+
 
 <!-- 🏷️ Categorias -->
 <section class="categories">
   <h2>📂 Categorias em Destaque</h2>
   <div class="category-list">
-    <a routerLink="/category/analgesicos" class="category-card">💊 Analgésicos</a>
-    <a routerLink="/category/antibioticos" class="category-card">🦠 Antibióticos</a>
-    <a routerLink="/category/vitaminas" class="category-card">💪 Vitaminas</a>
-    <a routerLink="/category/cosmeticos" class="category-card">🧴 Cosméticos</a>
+    <a routerLink="/category/analgesicos" class="category-card" aria-label="Ver categoria de Analgésicos">
+      <img src="assets/icons/analgesicos.png" alt="Ícone de Analgésicos">
+      <span>Analgésicos</span>
+    </a>
+    <a routerLink="/category/antibioticos" class="category-card" aria-label="Ver categoria de Antibióticos">
+      <img src="assets/icons/antibioticos.png" alt="Ícone de Antibióticos">
+      <span>Antibióticos</span>
+    </a>
+    <a routerLink="/category/vitaminas" class="category-card" aria-label="Ver categoria de Vitaminas">
+      <img src="assets/icons/vitaminas.png" alt="Ícone de Vitaminas">
+      <span>Vitaminas</span>
+    </a>
+    <a routerLink="/category/cosmeticos" class="category-card" aria-label="Ver categoria de Cosméticos">
+      <img src="assets/icons/cosmeticos.png" alt="Ícone de Cosméticos">
+      <span>Cosméticos</span>
+    </a>
   </div>
 </section>
+
+
 
 <!-- 🛍️ Lista de Produtos -->
 <section class="product-section">
   <h2>🔥 Ofertas Especiais</h2>
-  <app-product-list [searchTerm]="searchTerm"></app-product-list>
+
+  <!-- Loader animado enquanto carrega os produtos -->
+  <div *ngIf="loading" class="loader">
+    <div class="spinner"></div>
+    <p>Carregando ofertas...</p>
+  </div>
+
+  <!-- Lista de produtos -->
+  <app-product-list [searchTerm]="searchTerm" *ngIf="!loading"></app-product-list>
+
+  <!-- Botão para ver mais ofertas -->
+  <div class="see-more" *ngIf="!loading">
+    <a routerLink="/ofertas" class="see-more-btn">Ver mais ofertas →</a>
+  </div>
 </section>
+
+
 
 <app-footer></app-footer>

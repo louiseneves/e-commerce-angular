@@ -1,42 +1,32 @@
-import { Component, AfterViewInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { NavbarComponent } from '../../components/navbar/navbar.component';
 import { ProductListComponent } from '../../components/product-list/product-list.component';
 import { FooterComponent } from '../../components/footer/footer.component';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
+import { ProductService } from '../../services/product.service';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [NavbarComponent, ProductListComponent, FooterComponent, CommonModule,RouterLink],
+  imports: [ ProductListComponent, FooterComponent, CommonModule, RouterLink,NavbarComponent],
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css'],
 })
-export class HomeComponent implements AfterViewInit {
+export class HomeComponent implements OnInit {
   searchTerm: string = '';
-  intervalId: any;
+  loading: boolean = true; // Estado de carregamento
 
+  constructor(private productService: ProductService) {}
+
+  ngOnInit() {
+    // Simular carregamento de produtos
+    this.productService.getProducts().subscribe(products => {
+      // Aqui você pode definir seus produtos
+      this.loading = false; // Define como não carregando após os produtos serem buscados
+    });
+  }
   onSearch(term: string) {
     this.searchTerm = term;
-  }
-
-  ngAfterViewInit() {
-    setTimeout(() => {
-      const slides = document.querySelector('.slides') as HTMLElement;
-      if (!slides) return; // ✅ Evita erro se o elemento não for encontrado
-
-      const images = slides.children.length;
-      let index = 0;
-
-      this.intervalId = setInterval(() => {
-        if (!slides) return;
-        index = (index + 1) % images;
-        slides.style.transform = `translateX(${-index * 100}%)`;
-      }, 3000); // ✅ Troca de imagem a cada 3 segundos com transição suave
-    }, 500); // ✅ Garante que o DOM esteja carregado
-  }
-
-  ngOnDestroy() {
-    clearInterval(this.intervalId); // ✅ Para o carrossel ao sair da página
   }
 }

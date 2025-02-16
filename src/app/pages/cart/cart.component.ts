@@ -16,9 +16,9 @@ export class CartComponent implements OnInit {
   constructor(private cartService: CartService) {}
 
   ngOnInit() {
-    // Inscreve-se para receber atualizações do carrinho
-    this.cartService.getCart().subscribe(cart => {
-      this.cart = cart;
+    // Se inscreva para obter os itens do carrinho
+    this.cartService.getCart().subscribe(items => {
+      this.cart = items; // Atualiza a lista de itens
     });
   }
 

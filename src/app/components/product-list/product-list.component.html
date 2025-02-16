@@ -1,28 +1,32 @@
 <div class="product-list">
-  <div *ngFor="let product of products; trackBy: trackById" class="product-card">
+  <div *ngFor="let product of filteredProducts" class="product-card" [class.out-of-stock]="!product.inStock">
     
-    <!-- Imagem do produto -->
+    <!-- 📸 Imagem do produto -->
     <div class="product-image">
-      <img [src]="product.image" alt="{{ product.name }}">
+      <img [src]="product.image || 'assets/img/placeholder.jpg'" alt="{{ product.name }}">
     </div>
 
-    <!-- Nome do produto -->
+    <!-- 📌 Nome do produto -->
     <h3>{{ product.name }}</h3>
 
-    <!-- Princípio ativo (se existir) -->
+    <!-- 🔬 Princípio ativo (se existir) -->
     <p class="active-ingredient" *ngIf="product.activeIngredient">
       🔬 {{ product.activeIngredient }}
     </p>
 
-    <!-- Preço -->
+    <!-- 💰 Preço -->
     <p class="price">💰 R$ {{ product.price }}</p>
 
-    <!-- Botões -->
+    <!-- 🚫 Produto Esgotado -->
+    <p *ngIf="!product.inStock" class="out-of-stock-label">🚫 Esgotado</p>
+
+    <!-- 🛒 Botões de ação -->
     <div class="buttons">
-      <button (click)="addToCart(product)">🛒 Adicionar ao Carrinho</button>
+      <button (click)="addToCart(product)" [disabled]="!product.inStock" [attr.title]="!product.inStock ? 'Produto esgotado' : ''">
+        🛒 Adicionar ao Carrinho
+      </button>
       <button [routerLink]="['/product', product.id]">🔍 Ver Detalhes</button>
     </div>
 
   </div>
 </div>
-

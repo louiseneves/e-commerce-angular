@@ -5,6 +5,7 @@ export interface Product {
   image: string;
   category: string;
   activeIngredient:string;
+  inStock: boolean;
 }
 
   

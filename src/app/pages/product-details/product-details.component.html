@@ -1,6 +1,6 @@
 <div *ngIf="product; else notFound" class="product-details">
   <h1>{{ product.name }}</h1>
-  <img [src]="product.image" alt="{{ product.name }}">
+  <img [src]="product.image" alt="{{ product.name }} - {{ product.activeIngredient }}">
   <p class="active-ingredient">Princípio Ativo: {{ product.activeIngredient }}</p>
   <p class="category">Categoria: {{ product.category }}</p>
   <p class="price">💰 R$ {{ product.price }}</p>
@@ -14,6 +14,7 @@
 <ng-template #notFound>
   <p class="not-found">⚠ Produto não encontrado!</p>
 </ng-template>
+
 
 
 
